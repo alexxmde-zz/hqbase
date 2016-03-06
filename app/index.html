@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>HQBase</title>
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.min.css">
+	</head>
+	<body ng-app="hqbase">
+		<div class="container" >
+
+			<header class="jumbotron text-center">
+				<h1>HQBase 0.1</h1>
+			</header>
+
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<div class="navbar-brand text-center">
+						<a href="#">HQBase</a>
+					</div>
+					<div class="text-center col-sm-12">
+						<button type="button" class="center-text navbar-toggle"
+							data-target=".navbar-collapse" data-toggle="collapse"
+									  aria-expanded="false">
+
+							<span class="sr-only">Toggle Navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+				</div> <!-- navbar-header -->
+				<div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav text-center">
+								<li><a href="#">Selos</a></li>
+								<li><a href="#">Roteiristas</a></li>
+								<li><a href="#">Desenhistas</a></li>
+								<li><a href="#">HQs</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<article ng-view></article>
+
+		</div>
+		<script src="vendor/jquery/dist/jquery.min.js"></script>
+		<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="vendor/angular/angular.js"></script>
+		<script src="vendor/angular-route/angular-route.js"></script>
+		<script src="js/hqbase.js"></script>
+	</body>
+</html>

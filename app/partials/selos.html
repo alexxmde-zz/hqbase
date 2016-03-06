@@ -1,0 +1,27 @@
+<h2>Selos</h2>
+<div class="row">
+	<table class="table table-responsive table-striped">
+		<thead class="thead">
+			<tr>
+				<th>Nome</th>
+				<th>Site</th>
+				<th>Logo</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr ng-repeat="s in selos">
+				<td><a href="/#/selos/{{s.nome}}">{{s.nome}}</a></td>
+				<td>{{s.site}}</td>
+				<td>{{s.logo}}</td>
+				<td><button class="btn btn-warning">Excluir</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<div class="row">
+	<a href="/#/selos/novo">
+<button class="btn btn-primary btn-lg">+</button>
+	</a>
+</div>

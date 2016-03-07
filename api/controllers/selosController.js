@@ -1,4 +1,6 @@
-var model = require('../config/schema');
+var model = require('../config/schema'),
+	path = require('path'),
+	fs = require('fs');
 
 var selosController = function () {
     //Callback do Save
@@ -10,16 +12,64 @@ var selosController = function () {
 		}
 	};
 
+	//Renomeia o logo do selo para o nome do selo.
+	var uploadLogo = function(file, name, cb){
+		var newPath = path.dirname(file.path) + '/' + name + ".jpg";
+	
+		fs.rename(file.path, newPath, function(err) {
+
+			if(err) return err;
+			//Retorna o novo caminho do selo.
+			if(typeof cb === 'function')
+			cb(newPath);
+
+		});
+	};
+
 	return {
 
-		// -- POST /api/selos
+		// -- POST /api/selo
+		// -- PUT /api/selo/:nome
 		postSelo: function (req, res) {
+			var seloReq = req.body;
+			var fileReq = req.file;
+			//Se o arquivo for encontrado na requisição.
+			if (fileReq) {
+				uploadLogo(fileReq, seloReq.nome, function (logo) {
+					seloReq.logo = logo;
+					var selo = new model.Selos(seloReq, true);
+					selo.save( function (err) {
+						saveCb(err, res);
 
-			var selo = new model.Selos(req.body, true);
-			selo.save( function (err) {
-				saveCb(err, res);
-			});
+					});
 
+				});
+
+
+			} else {
+				res.status(202).send("Logo do selo não presente na requisição.");
+
+			} //else
+		},
+
+		putSelo: function(req, res){
+			var seloReq = req.body;
+			var fileReq = req.file;
+
+			if (fileReq) {
+				uploadLogo(fileReq, seloReq.nome, function (logo) {
+					seloReq.logo = logo;
+				});
+			}
+
+			var query = {"nome" : req.params.nome};
+			model.Selos.update(query, {$set : seloReq}, function(err, selo) {
+				if(err){
+					res.status(202).send("Não foi possível atualizar o selo");
+				} else {
+					
+				}
+			});	
 		},
 
 		// -- GET /api/selos

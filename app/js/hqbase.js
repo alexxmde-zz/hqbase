@@ -37,15 +37,30 @@ hqbase.controller('SelosController',
 
 hqbase.controller('SeloController', 
 		function($scope, $http, $routeParams) {
-			$scope.selo = {nome: "DC"};
-			if ($routeParams.nome) {
 
+			var method = "POST",
+				url = "/api/selo";
+
+			//Se há parametro, é PUT
+			if ($routeParams.nome) {
 				$http.get('/api/selos/' + $routeParams.nome)
 					.then(function(response) {
 						$scope.selo = response.data;
-					});
+						method = "PUT";
+						url = "/api/selo/" + $routeParams.nome;
+
+					}); //$http.get
 			}//if
 
+			$scope.submit = function() {
+				$.ajax({
+					url: url,
+					type: method,
+					data: new FormData($('form')[0]),
+					processData: false,
+					contentType: false
+				});
+			}
 		});
 
 

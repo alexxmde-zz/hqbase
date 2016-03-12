@@ -1,19 +1,22 @@
-<h2>Selos</h2>
+<h1>{{hello}}</h1>
+<h2>Roteiristas</h2>
 <div class="row">
 	<table class="table table-responsive table-striped">
 		<thead class="thead">
 			<tr>
 				<th>Nome</th>
-				<th>Site</th>
-				<th>Logo</th>
+				<th>Pais</th>
+				<th>Nascido em</th>
+				<th>Descrição</th>
 			</tr>
 
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in selos">
-				<td><a href="/#/selo/{{s.nome}}">{{s.nome}}</a></td>
-				<td>{{s.site}}</td>
-				<td><img ng-src="/{{s.logo}}"></td>
+			<tr ng-repeat="r in roteiristas">
+				<td><a ng-href="/#/roteirista/{{r.nome}}">{{r.nome}}</a></td>
+				<td>{{r.pais}}</td>
+				<td>{{r.anoNascimento}}</td>
+				<td>{{r.descricao}}</td>
 				<td><button class="btn btn-warning">Excluir</button></td>
 			</tr>
 		</tbody>
@@ -21,7 +24,7 @@
 
 </div>
 <div class="row">
-	<a href="/#/selo">
+	<a href="/#/roteirista">
 <button class="btn btn-primary btn-lg">+</button>
 	</a>
 </div>

@@ -1,4 +1,8 @@
 var mongoose = require('mongoose');
+
+mongoose.set('debug', 'true');
+
+
 mongoose.connect('mongodb://localhost/hqbase');
 
 var db = mongoose.connection;

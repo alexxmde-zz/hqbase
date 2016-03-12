@@ -14,16 +14,29 @@ var selosController = function () {
 
 	//Renomeia o logo do selo para o nome do selo.
 	var uploadLogo = function(file, name, cb){
+		if(file){
+		
 		var newPath = path.dirname(file.path) + '/' + name + ".jpg";
 	
 		fs.rename(file.path, newPath, function(err) {
 
 			if(err) return err;
 			//Retorna o novo caminho do selo.
-			if(typeof cb === 'function')
+			if(typeof cb === 'function'){
+			var arrPath = newPath.split('/');
+			newPath = arrPath.slice(1, arrPath.length).join('/');
+
 			cb(newPath);
+			
+			}
 
 		});
+		}else{
+			if(typeof cb === 'function'){
+				cb(newPath);
+			}
+		
+		}
 	};
 
 	return {
@@ -55,21 +68,22 @@ var selosController = function () {
 		putSelo: function(req, res){
 			var seloReq = req.body;
 			var fileReq = req.file;
-
-			if (fileReq) {
+			console.log(seloReq);
 				uploadLogo(fileReq, seloReq.nome, function (logo) {
+					if(logo)
 					seloReq.logo = logo;
-				});
-			}
+					var query = {"nome" : req.params.nome};
+					model.Selos.update(query, {$set : seloReq}, function(err, selo) {
+						if(err){
+							res.status(202).send("Não foi possível atualizar o selo");
+						} else {
+							res.status(200).send();
 
-			var query = {"nome" : req.params.nome};
-			model.Selos.update(query, {$set : seloReq}, function(err, selo) {
-				if(err){
-					res.status(202).send("Não foi possível atualizar o selo");
-				} else {
-					
-				}
-			});	
+						}
+					});	
+				});
+
+
 		},
 
 		// -- GET /api/selos

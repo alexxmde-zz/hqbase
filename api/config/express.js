@@ -12,6 +12,7 @@ module.exports = function (){
 		app.set('views', 'api/views');
 
 	app.use(express.static('./app/'));
+	app.use('/images', express.static('api/images/'));
 	app.use(bodyParser.urlencoded({extended: false}));
 	app.use(bodyParser.json());
 

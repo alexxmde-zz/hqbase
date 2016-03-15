@@ -50,6 +50,13 @@ hqbase.config(['$routeProvider',
 			templateUrl: 'partials/desenhista.html',
 			controller: 'DesenhistaController'
 		})
+		
+		//HQs
+		.when('/hq', {
+			templateUrl: 'partials/hq.html',
+			controller: 'HqController'
+		})
+
 		.otherwise({
 			redirectTo: '/selos'
 		});

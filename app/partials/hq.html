@@ -1,0 +1,30 @@
+<div class="row">
+	<h2 ng-hidden="hq">Nova HQ</h2>
+
+</div>
+
+<div class="row">
+	<form>
+		<div class="col-md-4">
+
+			<div class="form-group">
+			<label for="titulo">Titulo</label>
+			<input type="text" ng-model="hq.titulo" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="Roteirista">Roteirista</label>
+				<select class="form-control" name="roteiristas">
+					<option ng-repeat="r in roteiristas" value="{{r._id}}">{{r.nome}}</option>
+				</select>
+			</div>
+
+
+			<div class="form-group">
+				<label for="desenhista">Desenhista</label>
+				<select id="sDesenhista" class="form-control" name="desenhistas">
+					<option ng-repeat="d in desenhistas" value="{{d._id}}">{{d.nome}}</option>
+				</select>
+			</div>
+		</div>
+	</form>
+</div>

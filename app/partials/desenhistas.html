@@ -1,0 +1,30 @@
+<div class="row">
+<h2>Desenhistas</h2>
+</div>
+
+<div class="row">
+	<table class="table table-responsive table-striped">
+		<thead class="thead">
+			<tr>
+				<th>Nome</th>
+				<th>Pais</th>
+				<th>Nascido em</th>
+				<th>Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="d in desenhistas">
+				<td><a ng-href="/#/desenhista/{{d.nome}}">{{d.nome}}</a></td>
+				<td>{{d.pais}}</td>
+				<td>{{d.anoNascimento}}</td>
+				<td>{{d.descricao}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="row">
+	<a href="/#/desenhista">
+		<button class="btn btn-primary btn-lg">+</button>
+	</a>
+</div>

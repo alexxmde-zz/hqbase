@@ -1,0 +1,43 @@
+<div class="row">
+	<h2 ng-hidden="desenhista">Novo Desenhista</h2>
+	<h2 ng-show="desenhista">{{desenhista.nome}}</h2>
+</div>
+
+<div class="row">
+	<form ng-submit="submit()">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="nome">Nome</label>
+				<input type="text" ng-model="desenhista.nome" class="form-control" name="nome">
+			</div>
+
+			<div class="form-group">
+				<img id="fotoDesenhista" ng-src="/{{desenhista.foto}}">
+			</div>
+
+			<div class="form-group">
+				<label for="foto">Foto</label>
+				<input type="file" name="foto">
+			</div>
+
+			<div class="form-group">
+				<label for="pais">Pais</label>
+				<input class="form-control" ng-model="desenhista.pais" type="text" name="pais">
+			</div>
+			<div class="form-group">
+				<label for="anoNascimento">Ano de Nascimento</label>
+				<input type="text" name="anoNascimento" ng-model="desenhista.anoNascimento" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label for="descricao">Descrição</label>
+				<input type="text" name="descricao" ng-model="desenhista.descricao" class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Salvar">
+				<a href="/#/desenhistas"><button class="btn btn-default">Voltar</button></a>
+			</div>
+		</div>
+	</form>
+</div>

@@ -13,7 +13,7 @@ hqbase.controller("RoteiristaController",
 			var uri = "/api/roteirista";
 			var method = "POST";
 
-			if($routeParams.nome) {
+			if ($routeParams.nome) {
 				uri = encodeURI("/api/roteirista/" + $routeParams.nome);
 				method = "PUT";
 
@@ -36,5 +36,4 @@ hqbase.controller("RoteiristaController",
 
 				$location.url('/roteiristas');
 			};
-
 		});

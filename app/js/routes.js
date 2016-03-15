@@ -15,7 +15,7 @@ hqbase.config(['$routeProvider',
 			controller: 'SeloController'
 		})
 
-
+//Roteiristas
 
 		.when('/roteiristas', {
 			templateUrl: 'partials/roteiristas.html',
@@ -31,6 +31,24 @@ hqbase.config(['$routeProvider',
 		.when('/roteirista/:nome', {
 			templateUrl: 'partials/roteirista.html',
 			controller: 'RoteiristaController'
+		})
+	
+
+//Desenhistas
+
+		.when('/desenhistas', {
+			templateUrl: 'partials/desenhistas.html',
+			controller: 'DesenhistasController'
+		})
+
+		.when('/desenhista/:nome', {
+			templateUrl: 'partials/desenhista.html',
+			controller: 'DesenhistaController'
+		})
+
+		.when('/desenhista', {
+			templateUrl: 'partials/desenhista.html',
+			controller: 'DesenhistaController'
 		})
 		.otherwise({
 			redirectTo: '/selos'

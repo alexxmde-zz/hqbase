@@ -2,7 +2,53 @@ var model = require('../config/schema');
 
 var hqController = function () {
 
+	var uploadCapa= function (file, newName, cb) {
+
+		//Remove(alguns) caracteres especiais do arquivo.
+		newName = newName.replace(' ', '-').replace('?','7');
+
+		//Se existir arquivo.
+		if (file) {
+
+			//Monta diretório + nome + extensão do arquivo
+			var newPath = path.dirname(path.dirname(file.path)) + '/capas/' + newName + '.jpg';
+
+			fs.rename(file.path, newPath, function(err){
+				if (err) {
+					console.log(err);
+					console.log(newPath);
+					return;
+				}
+
+				//Chama callback passando o nome do arquivo renomeado.
+				if (typeof cb === 'function') {
+					var arrPath = newPath.split('/');
+					newPath = arrPath.splice(1, arrPath.length).join('/');
+					cb(newPath);
+				}
+
+			});
+			//Se não existir arquivo, apenas chama o callback.
+		} else {
+			if(typeof cb === 'function') {
+				cb(null);
+			}
+
+		}
+	};
+
 	return {
+		postHq : function (req, res) {
+			var hq = req.body,
+			capa = req.file;
+
+			model.Hq.create(hq, function(err, newHq) {
+
+				if(err) console.log(err);
+				else res.status(200).send();
+			});
+
+		},
 		test : function (req, res) {
 			var seloId,
 			roteiristaId,
@@ -41,14 +87,14 @@ var hqController = function () {
 					roteiristas: [r],
 					desenhistas: [d]
 				};
-				   model.Hq.create(hq, function(err, hqq){
-					   model.Hq.findOne({titulo: "Planetes"}).populate('roteiristas')
-					   .exec(function (err, h) {
-						   console.log(h.roteiristas);
-					   });
-				   });
-				   
-				   
+				model.Hq.create(hq, function(err, hqq){
+					model.Hq.findOne({titulo: "Planetes"}).populate('roteiristas')
+						.exec(function (err, h) {
+							console.log(h.roteiristas);
+						});
+				});
+
+
 
 
 				res.send();

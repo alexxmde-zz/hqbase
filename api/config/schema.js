@@ -27,15 +27,19 @@ var connection = require('./db'),
 	hqSchema =  {
 		titulo : { type: String, required: true },
 		subTitulo : { type: String },
+		capa : {type: String},
 
 		//Selo
 		selo : {type : connection.Schema.Types.ObjectId, ref : 'Selo'},
 
+		//Roteiristas
 		roteiristas : [ { 
 			type : connection.Schema.Types.ObjectId,
 			ref : 'Roteirista'
 
 		} ],
+
+		//Desenhistas
 		desenhistas : [ {
 			type: connection.Schema.Types.ObjectId,
 			ref : 'Desenhista'

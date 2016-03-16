@@ -1,0 +1,12 @@
+
+API
+# Implementar express-load
+# Aplicar JSLinter em todos os arquivos .js
+# Automatizar a criação das pastas api/images/*
+
+APP
+# Aplicar JSLinter em todos os arquivos .js
+# Criar um controle mais dinámico para seleção de roteiristas / desenhistas
+# Adicionar validações nos campos
+# Criar redirecionamentos e mensagens após ações de inserção/atualização
+#

@@ -18,15 +18,17 @@
 
 			<div class="form-group">
 				<label for="Selo">Selo</label>
-				<select class="form-control" name="selo" ng-model="hq.selo">
+				<select class="form-control" name="selo" ng-model="hq.selo._id">
 					<option ng-repeat="s in selos" value="{{s._id}}">{{s.nome}}</option>
 				</select>
 			</div>
+			<hqb-multi-select options="roteiristas" chosens="hq.roteiristas" bind="hq.roteiristas"></hqb-multi-select>
 
 			<div class="form-group">
 				<label for="Roteirista">Roteirista</label>
-				<select class="form-control" name="roteiristas"  ng-model="hq.roteiristas" multiple>
-					<option ng-repeat="r in roteiristas" value="{{r._id}}">{{r.nome}}</option>
+				<select class="form-control" name="roteiristas"  ng-model="hq.roteiristas"  multiple>
+
+					<option ng-selected="hq.roteiristas[0]._id" ng-repeat="r in roteiristas" value="{{r._id}}" >{{r.nome}}</option>
 				</select>
 			</div>
 

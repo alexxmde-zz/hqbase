@@ -1,4 +1,6 @@
 var model = require('../config/schema');
+var path = require('path');
+var fs = require('fs');
 
 var hqController = function () {
 
@@ -38,17 +40,56 @@ var hqController = function () {
 	};
 
 	return {
+
 		postHq : function (req, res) {
 			var hq = req.body,
-			capa = req.file;
+			capa = req.file,
+			nomeArqCapa = hq.titulo + ' ' + hq.subTitulo;
 
-			model.Hq.create(hq, function(err, newHq) {
+			uploadCapa(capa, nomeArqCapa, function(capaField){
+				if (capaField) {
+					hq.capa = capaField;
+				}
 
-				if(err) console.log(err);
-				else res.status(200).send();
-			});
+				model.Hq.create(hq, function(err, newHq) {
+
+					if(err) console.log(err);
+					else res.status(200).send();
+				});
+
+			})
 
 		},
+
+		getHqs : function (req, res) {
+			model.Hq.find()
+				.populate('roteiristas')
+				.populate('desenhistas')
+				.populate('selo')
+				.exec(function(err, hqs) {
+					if(err)
+						res.status(500).send(err);
+					else
+						res.json(hqs);
+				});
+		},
+
+		getHq : function (req, res) {
+			var  query = {"_id" : req.params.id}
+			model.Hq.findOne(query)
+				.populate('roteiristas')
+				.populate('desenhistas')
+				.populate('selo')
+				.exec(function(err, hq) {
+					if(err)
+						res.status(500).send(err);
+					else
+						res.json(hq);
+				});
+
+		},
+
+
 		test : function (req, res) {
 			var seloId,
 			roteiristaId,

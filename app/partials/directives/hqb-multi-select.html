@@ -1,0 +1,12 @@
+<div class="form-group hqb-multi-select">
+<select multiple>
+	<option ng-repeat="o in options">{{o.nome}}</option>
+</select>
+<button ng-click="addToMulti($event)">
+	>
+</button>
+<button ng-click="removeFromMulti($event)"> < </button>
+<select multiple ng-model="hq.selo._id">
+	<option ng-repeat="c in bind" value="c._id">{{c.nome}}</option>
+</select>
+</div>

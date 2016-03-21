@@ -1,0 +1,34 @@
+<div class="row">
+	<h2>HQs</h2>
+</div>
+
+<div class="row">
+	<table class="table table-responsive table-striped">
+		<thead class="thead">
+			<tr>
+				<th>Selo</th>
+				<th>Titulo</th>
+				<th>Subtitulo</th>
+				<th>Roteiristas</th>
+				<th>Desenhistas</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr ng-repeat="h in hqs">
+				<td><a ng-href="/#/selo/{{h.selo.nome}}"><img ng-src="/{{h.selo.logo}}"></a></td>
+				<td><a ng-href="/#/hq/{{h._id}}">{{h.titulo}}</a></td>
+				<td>{{h.subTitulo}}</td>
+				<td><link-many entities="h.roteiristas" domain="'roteirista'"></link-many></td>
+				<td><link-many entities="h.desenhistas" domain="'desenhista'"></link-many></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<div class="row">
+	<a href="/#/hq">
+		<button class="btn btn-primary btn-lg">+</button>
+	</a>
+
+</div>

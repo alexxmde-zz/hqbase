@@ -38,5 +38,7 @@ router.post('/api/desenhista', upload.single('foto'), desenhistasController.post
 
 //Rotas Hq
 router.post('/api/hq', upload.single('capa'), hqController.postHq);
+router.get('/api/hqs', hqController.getHqs);
+router.get('/api/hq/:id', hqController.getHq);
 
 module.exports = router;

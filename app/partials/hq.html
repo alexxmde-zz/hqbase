@@ -22,28 +22,20 @@
 					<option ng-repeat="s in selos" value="{{s._id}}">{{s.nome}}</option>
 				</select>
 			</div>
-			<hqb-multi-select options="roteiristas" chosens="hq.roteiristas" bind="hq.roteiristas"></hqb-multi-select>
+			<div ng-if="roteiristas">
+				<label>Roteiristas</label>		
+			<hqb-multi-select options="roteiristas" chosens="hq.roteiristas" nm="roteiristas"></hqb-multi-select>
 
-			<div class="form-group">
-				<label for="Roteirista">Roteirista</label>
-				<select class="form-control" name="roteiristas"  ng-model="hq.roteiristas"  multiple>
-
-					<option ng-selected="hq.roteiristas[0]._id" ng-repeat="r in roteiristas" value="{{r._id}}" >{{r.nome}}</option>
-				</select>
 			</div>
 
-
-			<div class="form-group">
-				<label for="desenhista">Desenhista</label>
-				<select	id="sDesenhista" class="form-control" name="desenhistas" 
-												  ng-model="hq.desenhistas" multiple>
-					<option ng-repeat="d in desenhistas" value="{{d._id}}">{{d.nome}}</option>
-				</select>
+			<div ng-if="desenhistas">
+				<label>Desenhistas</label>
+				<hqb-multi-select options="desenhistas" chosens="hq.desenhistas" nm="desenhistas"></hqb-multi-select>
 			</div>
 
 			<div class="form-group">
 				<label for="capa">Capa</label>
-				<img ng-src="hq.capa" class="form-control">
+				<img ng-src="/{{hq.capa}}" id="capa">
 				<input type="file" name="capa" id="imagemCapa">
 			</div>
 

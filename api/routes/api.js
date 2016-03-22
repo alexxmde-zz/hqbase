@@ -40,5 +40,6 @@ router.post('/api/desenhista', upload.single('foto'), desenhistasController.post
 router.post('/api/hq', upload.single('capa'), hqController.postHq);
 router.get('/api/hqs', hqController.getHqs);
 router.get('/api/hq/:id', hqController.getHq);
+router.put('/api/hq/:id', upload.single('capa'), hqController.putHq);
 
 module.exports = router;

@@ -20,7 +20,6 @@ hqbase.controller("RoteiristaController",
 				$http.get('/api/roteirista/' + $routeParams.nome)
 					.then(function(response){
 						$scope.roteirista = response.data;
-						console.log($scope.roteirista);
 
 					});
 			}

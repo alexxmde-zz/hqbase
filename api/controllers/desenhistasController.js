@@ -20,6 +20,8 @@ var desenhistasController = function () {
 					newPath = arrPath.splice(1, arrPath.length).join('/');
 					cb(newPath);
 				}
+				
+				
 
 			});
 

@@ -36,6 +36,8 @@ var hqController = function () {
 				cb(null);
 			}
 
+
+
 		}
 	};
 
@@ -57,7 +59,29 @@ var hqController = function () {
 					else res.status(200).send();
 				});
 
-			})
+			});
+
+		},
+
+		putHq : function(req, res){
+			var hq = req.body,
+			query = {'_id' : req.params.id},
+			capa = req.file,
+			nomeArqCapa = hq.titulo + ' ' + hq.subTitulo;
+			console.log(hq);
+
+			uploadCapa(capa, nomeArqCapa, function(capaField){
+				if (capaField) {
+					hq.capa = capaField;
+				}
+
+				model.Hq.update(query, {$set: hq}, function(err, newHq) {
+
+					if(err) console.log(err);
+					else res.status(200).send();
+				});
+
+			});
 
 		},
 

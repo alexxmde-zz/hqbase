@@ -7,4 +7,15 @@ width:50%;
 width:50%;
 
 }
+
+#capa {
+width:50%;
+}
 option:checked {  background-color:lightblue; }
+
+
+
+.mg-t-100p {
+	margin-top:100%;
+
+}
